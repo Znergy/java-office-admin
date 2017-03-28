@@ -21,5 +21,11 @@ public class Schedule {
     return this.id_patient;
   }
 
-  
+  public static List<Schedule> all() {
+    String sql = "SELECT id, description, categoryId FROM tasks";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(ToDo.class);
+    }
+  }
+
 }
